@@ -137,6 +137,35 @@ public class MasterPilot {
                     graphics.fill(new Ellipse2D.Float(bodyPlanet.getPosition().x, bodyPlanet.getPosition().y, 500, 500));
 //DISPOSE AND STEP TIME
                     graphics.dispose();
+                                            KeyboardEvent event = context.pollKeyboard();
+
+                    if (event != null) {
+                        System.out.println(event.toString());
+                        System.out.println(" x = " + body.getPosition().x + " y = " + body.getPosition().y);
+                        switch (event.getKey()) {
+                            case UP:
+                                body.applyLinearImpulse(new Vec2(0, -50), body.getPosition());
+                                break;
+
+                            case DOWN:
+
+                                body.applyLinearImpulse(new Vec2(0, 50), body.getPosition());
+                                break;
+                            case LEFT:
+
+                                body.applyLinearImpulse(new Vec2(-50, 0), body.getPosition());
+                                break;
+                            case RIGHT:
+
+                                body.applyLinearImpulse(new Vec2(50, 0), body.getPosition());
+                                break;
+                            case R:
+
+//                                body.
+                                break;
+                        }
+                    }
+                    event = null;
                     world.step(timeStep, velocityIterations, positionIterations);
                 });
             }
